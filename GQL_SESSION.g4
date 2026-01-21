@@ -85,12 +85,9 @@ sessionResetArguments
 // 7.3 <session close command>
 // ---------------------------------------------------------------------------------------------------------------------
 
-/* Reduce top-level programs to be procedure specifications
-
 sessionCloseCommand
     : SESSION CLOSE
     ;
-*/
 
 // ---------------------------------------------------------------------------------------------------------------------
 // 7.4 <session parameter specification>
