@@ -1,7 +1,6 @@
 grammar GQL_PROGRAM;
 
-import GQL_PREAMBLE,
-       GQL_PROCEDURES;
+import GQL_PROCEDURES;
 
 gqlProgram
 /* - Reduce top-level programs to effectively be procedure specifications
