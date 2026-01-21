@@ -10,8 +10,8 @@ gqlProgram
     ;
 
 programActivity
-    : sessionActivity
-    | transactionActivity
+    : { Features.sessionCmds }? sessionActivity
+    |                           transactionActivity
     ;
 
 sessionActivity
@@ -21,7 +21,8 @@ sessionActivity
 
 transactionActivity
 /* Reduce top-level transaction activities to effectively be procedure specifications */
-    : startTransactionCommand (proc=procedureSpecification endTransactionCommand?)?
-    | proc=procedureSpecification endTransactionCommand?
-    | endTransactionCommand
+    : { Features.transactionCmds }? startTransactionCommand (proc=procedureSpecification endTransactionCommand?)?
+    | { Features.transactionCmds }? proc=procedureSpecification endTransactionCommand
+    | { Features.transactionCmds }? endTransactionCommand
+    |                               proc=procedureSpecification
     ;
