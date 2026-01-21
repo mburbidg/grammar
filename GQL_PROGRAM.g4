@@ -10,19 +10,7 @@ gqlProgram
     ;
 
 programActivity
-    : { Features.sessionCmds }? sessionActivity
-    |                           transactionActivity
-    ;
-
-sessionActivity
-    : sessionResetCommand+
-    | sessionSetCommand+ sessionResetCommand*
-    ;
-
-transactionActivity
-/* Reduce top-level transaction activities to effectively be procedure specifications */
-    : { Features.transactionCmds }? startTransactionCommand (proc=procedureSpecification endTransactionCommand?)?
-    | { Features.transactionCmds }? proc=procedureSpecification endTransactionCommand
-    | { Features.transactionCmds }? endTransactionCommand
+    : { Features.sessionCmds }?     sessionActivity
+    | { Features.transactionCmds }? transactionActivity
     |                               proc=procedureSpecification
     ;

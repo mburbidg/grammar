@@ -1,5 +1,13 @@
 grammar GQL_TRANSACTIONS;
 
+import GQL_PROCEDURES;
+
+transactionActivity
+    : startTransactionCommand (proc=procedureSpecification endTransactionCommand?)?
+    | proc=procedureSpecification endTransactionCommand
+    | endTransactionCommand
+    ;
+
 /* Dummy rules, to allow for iterative changes to the grammar */
 
 startTransactionCommand

@@ -1,5 +1,10 @@
 grammar GQL_SESSION;
 
+sessionActivity
+    : sessionResetCommand+
+    | sessionSetCommand+ sessionResetCommand*
+    ;
+
 /* Dummy rules, to allow for iterative changes to the grammar */
 
 sessionResetCommand
