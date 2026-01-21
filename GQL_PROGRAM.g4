@@ -21,7 +21,13 @@ programActivity
     : sessionActivity
     | transactionActivity
 */
-    : proc=procedureSpecification
+    : sessionActivity
+    | proc=procedureSpecification
+    ;
+
+sessionActivity
+    : sessionResetCommand+
+    | sessionSetCommand+ sessionResetCommand*
     ;
 
 /* Reduce top-level programs to effectively be procedure specifications

@@ -1,11 +1,16 @@
 grammar GQL_SESSION;
 
-/*
-sessionActivity
-    : sessionResetCommand+
-    | sessionSetCommand+ sessionResetCommand*
+/* Dummy rules, to allow for iterative changes to the grammar */
+
+sessionResetCommand
+    : 'RESET_CMD'
     ;
 
+sessionSetCommand
+    : 'SETP_CMD'
+    ;
+
+/*
 // =====================================================================================================================
 // 7 Session management
 // =====================================================================================================================
