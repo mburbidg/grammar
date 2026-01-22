@@ -8,12 +8,6 @@ sessionActivity
     | sessionSetCommand+ sessionResetCommand*
     ;
 
-/* Dummy rules, to allow for iterative changes to the grammar */
-
-sessionResetCommand
-    : 'RESET_CMD'
-    ;
-
 // =====================================================================================================================
 // 7 Session management
 // =====================================================================================================================
@@ -69,7 +63,6 @@ sessionSetTimeZoneClause
 // 7.2 <session reset command>
 // ---------------------------------------------------------------------------------------------------------------------
 
-/* Reduce top-level programs to be procedure specifications
 sessionResetCommand
     : SESSION RESET sessionResetArguments?
     ;
@@ -81,7 +74,6 @@ sessionResetArguments
     | TIME ZONE
     | PARAMETER? sessionParameterSpecification
     ;
-*/
 
 // ---------------------------------------------------------------------------------------------------------------------
 // 7.3 <session close command>
@@ -95,9 +87,6 @@ sessionCloseCommand
 // 7.4 <session parameter specification>
 // ---------------------------------------------------------------------------------------------------------------------
 
-/* Reduce top-level programs to be procedure specifications
-
 sessionParameterSpecification
     : GENERAL_PARAMETER_REFERENCE
     ;
-*/
