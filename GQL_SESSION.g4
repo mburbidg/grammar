@@ -1,5 +1,8 @@
 grammar GQL_SESSION;
 
+import GQL_LITERALS,
+       GQL_PROCEDURES;
+
 sessionActivity
     : sessionResetCommand+
     | sessionSetCommand+ sessionResetCommand*
@@ -11,11 +14,6 @@ sessionResetCommand
     : 'RESET_CMD'
     ;
 
-sessionSetCommand
-    : 'SETP_CMD'
-    ;
-
-/*
 // =====================================================================================================================
 // 7 Session management
 // =====================================================================================================================
@@ -25,48 +23,47 @@ sessionSetCommand
 // ---------------------------------------------------------------------------------------------------------------------
 
 sessionSetCommand
-    : SESSION SET
-        (sessionSetSchemaClause | sessionSetGraphClause | sessionSetTimeZoneClause | sessionSetParameterClause)
+    : SESSION SET (
+        sessionSetSchemaClause
+//        | sessionSetGraphClause
+        | sessionSetTimeZoneClause
+//        | sessionSetParameterClause
+    )
     ;
 
 sessionSetSchemaClause
     : SCHEMA schemaReference
     ;
-
-sessionSetGraphClause
-    : PROPERTY? GRAPH graphExpression
-    ;
+//
+//sessionSetGraphClause
+//    : PROPERTY? GRAPH graphExpression
+//    ;
 
 sessionSetTimeZoneClause
-    : TIME ZONE setTimeZoneValue
+    : TIME ZONE timeZoneString
     ;
-
-setTimeZoneValue
-    : timeZoneString
-    ;
-
-sessionSetParameterClause
-    : sessionSetGraphParameterClause
-    | sessionSetBindingTableParameterClause
-    | sessionSetValueParameterClause
-    ;
-
-sessionSetGraphParameterClause
-    : PROPERTY? GRAPH sessionSetParameterName optTypedGraphInitializer
-    ;
-
-sessionSetBindingTableParameterClause
-    : BINDING? TABLE sessionSetParameterName optTypedBindingTableInitializer
-    ;
-
-sessionSetValueParameterClause
-    : VALUE sessionSetParameterName optTypedValueInitializer
-    ;
-
-sessionSetParameterName
-    : (IF NOT EXISTS)? sessionParameterSpecification
-    ;
-*/
+//
+//sessionSetParameterClause
+//    : sessionSetGraphParameterClause
+//    | sessionSetBindingTableParameterClause
+//    | sessionSetValueParameterClause
+//    ;
+//
+//sessionSetGraphParameterClause
+//    : PROPERTY? GRAPH sessionSetParameterName optTypedGraphInitializer
+//    ;
+//
+//sessionSetBindingTableParameterClause
+//    : BINDING? TABLE sessionSetParameterName optTypedBindingTableInitializer
+//    ;
+//
+//sessionSetValueParameterClause
+//    : VALUE sessionSetParameterName optTypedValueInitializer
+//    ;
+//
+//sessionSetParameterName
+//    : (IF NOT EXISTS)? sessionParameterSpecification
+//    ;
 
 // ---------------------------------------------------------------------------------------------------------------------
 // 7.2 <session reset command>

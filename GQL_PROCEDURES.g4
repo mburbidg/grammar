@@ -1605,7 +1605,6 @@ offsetClause
     : ( OFFSET | SKIP_TOKEN ) val=nonNegativeIntegerSpecification
     ;
 
-
 // =====================================================================================================================
 // 17 Object references
 // =====================================================================================================================
@@ -1613,8 +1612,6 @@ offsetClause
 // ---------------------------------------------------------------------------------------------------------------------
 // 17.1 <schema reference> and <catalog schema parent name>
 // ---------------------------------------------------------------------------------------------------------------------
-
-/* Non-conformant removal of schema references to cater for lack of GQL catalog support
 
 schemaReference
     : absoluteCatalogSchemaReference
@@ -1626,16 +1623,10 @@ absoluteCatalogSchemaReference
     : SOLIDUS
     | absoluteDirectoryPath schemaName
     ;
-*/
-
-/* Disable DDL and DML
 
 catalogSchemaParentAndName
     : absoluteDirectoryPath schemaName
     ;
-*/
-
-/* Non-conformant removal of schema references to cater for lack of GQL catalog support
 
 relativeCatalogSchemaReference
     : predefinedSchemaReference
@@ -1645,7 +1636,7 @@ relativeCatalogSchemaReference
 predefinedSchemaReference
     : HOME_SCHEMA
     | CURRENT_SCHEMA
-    | PERIOD
+    | PERIOD_SIGN
     ;
 
 absoluteDirectoryPath
@@ -1659,7 +1650,6 @@ relativeDirectoryPath
 simpleDirectoryPath
     : (directoryName SOLIDUS)+
     ;
-*/
 
 // ---------------------------------------------------------------------------------------------------------------------
 // 17.2 <graph reference> and <catalog graph parent and name>

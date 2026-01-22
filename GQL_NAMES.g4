@@ -21,16 +21,13 @@ objectNameOrBindingVariable
     ;
 */
 
-/* Disable schema references
-
 directoryName
-    : identifier
+    : anyIdent
     ;
 
 schemaName
-    : identifier
+    : anyIdent
     ;
-*/
 
 graphName
     : anyIdent

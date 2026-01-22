@@ -104,12 +104,9 @@ recordLiteral
     ;
 */
 
-/* Disable session and transaction commands
-
 timeZoneString
     : characterStringLiteral
     ;
-*/
 
 characterStringLiteral
     : SINGLE_QUOTED_CHARACTER_SEQUENCE  #characterStringLiteralInSQuotes
