@@ -19,7 +19,7 @@ sessionActivity
 sessionSetCommand
     : SESSION SET (
         sessionSetSchemaClause
-//        | sessionSetGraphClause
+        | sessionSetGraphClause
         | sessionSetTimeZoneClause
 //        | sessionSetParameterClause
     )
@@ -28,10 +28,10 @@ sessionSetCommand
 sessionSetSchemaClause
     : SCHEMA schemaReference
     ;
-//
-//sessionSetGraphClause
-//    : PROPERTY? GRAPH graphExpression
-//    ;
+
+sessionSetGraphClause
+    : PROPERTY? GRAPH graphExpression
+    ;
 
 sessionSetTimeZoneClause
     : TIME ZONE timeZoneString
