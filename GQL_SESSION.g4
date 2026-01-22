@@ -1,3 +1,11 @@
+/* =====================================================================================================================
+   GQL_SESSION.g4
+   =====================================================================================================================
+
+   This file defines the productions of OpenGQL for session commands.
+
+   See OpenGQL.g4 for further information on the OpenGQL grammar.
+*/
 grammar GQL_SESSION;
 
 import GQL_LITERALS,

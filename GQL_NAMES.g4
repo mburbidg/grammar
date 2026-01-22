@@ -1,3 +1,11 @@
+/* =====================================================================================================================
+   GQL_NAMES.g4
+   =====================================================================================================================
+
+   This file defines the productions of OpenGQL for various names.
+
+   See OpenGQL.g4 for further information on the OpenGQL grammar.
+*/
 grammar GQL_NAMES;
 
 import GQL_IDENTS;

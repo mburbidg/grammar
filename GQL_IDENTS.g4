@@ -1,3 +1,11 @@
+/* =====================================================================================================================
+   GQL_IDENTS.g4
+   =====================================================================================================================
+
+   This file defines the productions of OpenGQL for identifiers and related lexical elements.
+
+   See OpenGQL.g4 for further information on the OpenGQL grammar.
+*/
 grammar GQL_IDENTS;
 
 import GQL_LEXER;

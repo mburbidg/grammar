@@ -1,3 +1,11 @@
+/* =====================================================================================================================
+   GQL_DDL.g4
+   =====================================================================================================================
+
+   This file defines the productions of OpenGQL catalog-modifying statements (aka DDL statements).
+
+   See OpenGQL.g4 for further information on the OpenGQL grammar.
+*/
 grammar GQL_DDL;
 
 import GQL_NAMES,

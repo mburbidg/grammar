@@ -1,3 +1,11 @@
+/* =====================================================================================================================
+   GQL_PROCEDURES.g4
+   =====================================================================================================================
+
+   This file defines the productions of OpenGQL for procedures, expressions, and predicates.
+
+   See OpenGQL.g4 for further information on the OpenGQL grammar.
+*/
 grammar GQL_PROCEDURES;
 
 import GQL_IDENTS,

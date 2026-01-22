@@ -1,3 +1,11 @@
+/* =====================================================================================================================
+   GQL_PARTICLES.g4
+   =====================================================================================================================
+
+   This file defines various auxiliary productions of OpenGQL.
+
+   See OpenGQL.g4 for further information on the OpenGQL grammar.
+*/
 grammar GQL_PARTICLES;
 
 import GQL_NAMES;

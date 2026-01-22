@@ -1,3 +1,11 @@
+/* =====================================================================================================================
+   GQL_OTYPES.g4
+   =====================================================================================================================
+
+   This file defines the productions of OpenGQL for object types and constraints.
+
+   See OpenGQL.g4 for further information on the OpenGQL grammar.
+*/
 grammar GQL_OTYPES;
 
 import GQL_NAMES,

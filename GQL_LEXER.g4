@@ -1,3 +1,11 @@
+/* =====================================================================================================================
+   GQL_LEXER.g4
+   =====================================================================================================================
+
+   This file defines the lexer grammar of OpenGQL.
+
+   See OpenGQL.g4 for further information on the OpenGQL grammar.
+*/
 lexer grammar GQL_LEXER;
 
 BOOLEAN_LITERAL

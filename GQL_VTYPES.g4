@@ -1,3 +1,11 @@
+/* =====================================================================================================================
+   GQL_VTYPES.g4
+   =====================================================================================================================
+
+   This file defines the productions of OpenGQL for value types.
+
+   See OpenGQL.g4 for further information on the OpenGQL grammar.
+*/
 grammar GQL_VTYPES;
 
 import GQL_NAMES,

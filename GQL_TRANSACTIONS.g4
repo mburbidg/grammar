@@ -1,3 +1,11 @@
+/* =====================================================================================================================
+   GQL_TRANSACTIONS.g4
+   =====================================================================================================================
+
+   This file defines the productions of OpenGQL for transaction commands.
+
+   See OpenGQL.g4 for further information on the OpenGQL grammar.
+*/
 grammar GQL_TRANSACTIONS;
 
 import GQL_PROCEDURES;

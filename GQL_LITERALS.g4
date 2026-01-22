@@ -1,3 +1,11 @@
+/* =====================================================================================================================
+   GQL_LITERALS.g4
+   =====================================================================================================================
+
+   This file defines the productions of OpenGQL for literals.
+
+   See OpenGQL.g4 for further information on the OpenGQL grammar.
+*/
 grammar GQL_LITERALS;
 
 import GQL_PARTICLES;
