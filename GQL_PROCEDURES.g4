@@ -2045,7 +2045,7 @@ commonValueExpression
     // and flag invalid type and function combinations.
     | lhs=commonValueExpression CONCATENATION_OPERATOR rhs=commonValueExpression                 #concatenationValExpr
     | PROPERTY? GRAPH expr=graphExpression                                                            #graphExprPrimary
-//    | BINDING? TABLE expr=bindingTableExpression                                                      #tableExprPrimary
+    | BINDING? TABLE expr=bindingTableExpression                                                      #tableExprPrimary
     | valueFunction                                                                              #valFun
     ;
 
