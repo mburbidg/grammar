@@ -116,11 +116,9 @@ nextStatement
 // 10.1 <graph variable definition>
 // ---------------------------------------------------------------------------------------------------------------------
 
-/* Simplify procedure body
-
-graphVariableDefinition
-    : PROPERTY? GRAPH bindingVariable optTypedGraphInitializer
-    ;
+//graphVariableDefinition
+//    : PROPERTY? GRAPH bindingVariable optTypedGraphInitializer
+//    ;
 
 optTypedGraphInitializer
     : (( DOUBLE_COLON | TYPED )? graphReferenceValueType)? graphInitializer
@@ -129,7 +127,6 @@ optTypedGraphInitializer
 graphInitializer
     : EQUALS_OPERATOR graphExpression
     ;
-*/
 
 // ---------------------------------------------------------------------------------------------------------------------
 // 10.2 <binding table variable definition>

@@ -9,6 +9,7 @@
 grammar GQL_VTYPES;
 
 import GQL_NAMES,
+       GQL_OTYPES,
        GQL_PARTICLES;
 
 // =====================================================================================================================
@@ -299,12 +300,9 @@ propertyValueType
 // 18.8 <binding table type>
 // ---------------------------------------------------------------------------------------------------------------------
 
-/* Simplify reference value types
-
 bindingTableType
     : BINDING? TABLE fieldTypeSetSpecification
     ;
-*/
 
 // ---------------------------------------------------------------------------------------------------------------------
 // 18.9 <value type>
@@ -560,8 +558,6 @@ emptyType
     | NOTHING
     ;
 
-/* Simplify reference value types
-
 graphReferenceValueType
     : openGraphReferenceValueType
     | closedGraphReferenceValueType
@@ -578,7 +574,6 @@ openGraphReferenceValueType
 bindingTableReferenceValueType
     : bindingTableType notNull?
     ;
-*/
 
 nodeReferenceValueType
     : openNodeReferenceValueType

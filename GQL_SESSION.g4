@@ -29,7 +29,7 @@ sessionSetCommand
         sessionSetSchemaClause
         | sessionSetGraphClause
         | sessionSetTimeZoneClause
-//        | sessionSetParameterClause
+        | sessionSetParameterClause
     )
     ;
 
@@ -44,16 +44,16 @@ sessionSetGraphClause
 sessionSetTimeZoneClause
     : TIME ZONE timeZoneString
     ;
-//
-//sessionSetParameterClause
-//    : sessionSetGraphParameterClause
+
+sessionSetParameterClause
+    : sessionSetGraphParameterClause
 //    | sessionSetBindingTableParameterClause
 //    | sessionSetValueParameterClause
-//    ;
-//
-//sessionSetGraphParameterClause
-//    : PROPERTY? GRAPH sessionSetParameterName optTypedGraphInitializer
-//    ;
+    ;
+
+sessionSetGraphParameterClause
+    : PROPERTY? GRAPH sessionSetParameterName optTypedGraphInitializer
+    ;
 //
 //sessionSetBindingTableParameterClause
 //    : BINDING? TABLE sessionSetParameterName optTypedBindingTableInitializer
@@ -62,10 +62,10 @@ sessionSetTimeZoneClause
 //sessionSetValueParameterClause
 //    : VALUE sessionSetParameterName optTypedValueInitializer
 //    ;
-//
-//sessionSetParameterName
-//    : (IF NOT EXISTS)? sessionParameterSpecification
-//    ;
+
+sessionSetParameterName
+    : (IF NOT EXISTS)? sessionParameterSpecification
+    ;
 
 // ---------------------------------------------------------------------------------------------------------------------
 // 7.2 <session reset command>
