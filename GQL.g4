@@ -272,7 +272,7 @@ nestedBindingTableQuerySpecification
 
 objectExpressionPrimary
     : VARIABLE valueExpressionPrimary
-    | parenthesizedValueExpression
+    | LEFT_PAREN valueExpression RIGHT_PAREN
     | nonParenthesizedValueExpressionPrimarySpecialCase
     ;
 
@@ -2218,39 +2218,30 @@ aggregatingValueExpression
 // 20.2 <value expression primary>
 
 valueExpressionPrimary
-    : parenthesizedValueExpression
-    | aggregateFunction
-    | unsignedValueSpecification
-// List and Record literals are reduntantly/abiguously part of the literal production
-//    | listValueConstructor
-//    | recordConstructor
-    | pathValueConstructor
-    | valueExpressionPrimary PERIOD propertyName      // <propertyReference
-    | valueQueryExpression
-    | caseExpression
-    | castSpecification
-    | element_idFunction
-    | letValueExpression
+    : valueExpressionPrimaryCommon
     | bindingVariableReference
-    ;
-
-parenthesizedValueExpression
-    : LEFT_PAREN valueExpression RIGHT_PAREN
+    | valueExpressionPrimary PERIOD propertyName      // <property reference>
+    | LEFT_PAREN valueExpression RIGHT_PAREN
     ;
 
 nonParenthesizedValueExpressionPrimary
-    : nonParenthesizedValueExpressionPrimarySpecialCase
+    : valueExpressionPrimaryCommon
     | bindingVariableReference
-    ;
+    | valueExpressionPrimary PERIOD propertyName      // <property reference>
+   ;
 
 nonParenthesizedValueExpressionPrimarySpecialCase
+    : valueExpressionPrimaryCommon
+    | valueExpressionPrimary PERIOD propertyName      // <property reference>
+    ;
+
+valueExpressionPrimaryCommon
     : aggregateFunction
     | unsignedValueSpecification
 // List and Record literals are reduntantly/abiguously part of the literal production
 //    | listValueConstructor
 //    | recordConstructor
     | pathValueConstructor
-    | valueExpressionPrimary PERIOD propertyName      // <property reference>
     | valueQueryExpression
     | caseExpression
     | castSpecification

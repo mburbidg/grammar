@@ -41,8 +41,6 @@ varIdent
     // <regular identifier>
     : REGULAR_IDENTIFIER                    #varIdentPlain
     | nonReservedWords                      #varIdentNonResWord
-    // Technically outside ISO GQL, but supported by most vendors nevertheless
-    | ACCENT_QUOTED_CHARACTER_SEQUENCE      #varIdentInAccents
     ;
 
 /* Inline regularIdentifier definition in variableIdentifier

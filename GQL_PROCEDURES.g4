@@ -177,7 +177,6 @@ valueInitializer
     : (( DOUBLE_COLON | TYPED )? valueType)? EQUALS_OPERATOR expr=valueExpression
     ;
 
-
 // =====================================================================================================================
 // 11 Object expressions
 // =====================================================================================================================
@@ -186,18 +185,11 @@ valueInitializer
 // 11.1 <graph expression>
 // ---------------------------------------------------------------------------------------------------------------------
 
-/* Simplify primary object expressions for now
-
 graphExpression
     : graphReference
     | objectExpressionPrimary
     | objectNameOrBindingVariable
     | currentGraph
-    ;
-*/
-
-graphExpression
-    : currentGraph
     ;
 
 currentGraph
@@ -228,17 +220,13 @@ nestedBindingTableQuerySpecification
 // 11.3 <object expression primary>
 // ---------------------------------------------------------------------------------------------------------------------
 
-/* Remove primary object expressions for now
-
 objectExpressionPrimary
-    : VARIABLE valueExpressionPrimary
-    | parenthesizedValueExpression
-    | valueExpressionPrimarySpecialCase
+    : VARIABLE prim=valueExpressionPrimary              #primaryExp
+    | LEFT_PAREN expr=valueExpression RIGHT_PAREN       #parenExpr
+    | scPrim=valueExpressionPrimarySpecialCase          #specialCase
     // Suggestion: Since regular literals have been removed from valueExpressionPrimarySpecialCase in MSFTGQL,
     // at least parameter specifications should be added here once this is commented in again
     ;
-
-*/
 
 
 // =====================================================================================================================
@@ -1663,15 +1651,12 @@ simpleDirectoryPath
 // 17.2 <graph reference> and <catalog graph parent and name>
 // ---------------------------------------------------------------------------------------------------------------------
 
-/* Remove primary object expressions for now
-
 graphReference
     : catalogObjectParentReference graphName
     | delimitedGraphName
     | homeGraph
     | referenceParameterSpecification
     ;
-*/
 
 /* Disable DDL and DML
 
@@ -1681,13 +1666,10 @@ catalogGraphParentAndName
     ;
 */
 
-/* Remove primary object expressions for now
-
 homeGraph
     : HOME_PROPERTY_GRAPH
     | HOME_GRAPH
     ;
-*/
 
 // ---------------------------------------------------------------------------------------------------------------------
 // 17.3 <graph type reference> and <catalog graph type parent and name>
@@ -2082,6 +2064,9 @@ commonValueExpression
     // cannot be combined. So it is up to implementation to post process the syntax tree
     // and flag invalid type and function combinations.
     | lhs=commonValueExpression CONCATENATION_OPERATOR rhs=commonValueExpression                 #concatenationValExpr
+    | PROPERTY? GRAPH expr=graphExpression                                                            #graphExprPrimary
+//    | BINDING? TABLE expr=bindingTableExpression                                                      #tableExprPrimary
+    | valueFunction                                                                              #valFun
     ;
 
 // Modified to ensure unambiguous parse tree
@@ -2178,31 +2163,35 @@ aggregatingValueExpression
 // ---------------------------------------------------------------------------------------------------------------------
 
 valueExpressionPrimary
-/* - Inline nonParenthesizedValueExpressionPrimary and propertyReference
-   - Inline parenthesizedValueExpression and nonParenthesizedValueExpressionPrimarySpecialCase
-
-    : parenthesizedValueExpression                                                          #parenExprPrimary
-    | nonParenthesizedValueExpressionPrimary
-*/
-    : val=unsignedValueSpecification                                                        #valSpecExprPrimary
-/* Remove primary object expressions for now
-
-    | PROPERTY? GRAPH graphExpression                                                       #graphExprPrimary
-    | BINDING? TABLE bindingTableExpression                                                 #tableExprPrimary
-*/
+    : val=valueExpressionPrimaryCommon                                                      #valSpecExprPrimary
     | varRef=bindingVariableReference                                                       #varRefExprPrimary
-    | valueQueryExpression                                                                  #valQueryExprPrimary
-    | caseExpression                                                                        #caseExprPrimary
-    | castSpecification                                                                     #castSpecPrimary
-    | elementIdFunction                                                                     #elemIdFunPrimary
-    | letValueExpression                                                                    #letValExprPrimary
-    | valueFunction                                                                         #valFunPrimary
-    | aggregateFunction                                                                     #aggrFunPrimary
-    | LEFT_PAREN expr=valueExpression RIGHT_PAREN                                           #parenExprPrimary
-    // The propertyReference production moved here to eliminate left mutual recursion.
     | prim=valueExpressionPrimary PERIOD_SIGN propertyName                                  #propExprPrimary
-    // Extension: list_indexing
-    | prim=valueExpressionPrimary LEFT_BRACKET index=valueExpression RIGHT_BRACKET          #elemRefExprPrimary
+    | LEFT_PAREN expr=valueExpression RIGHT_PAREN                                           #parenExprPrimary
+    ;
+
+nonParenthesizedValueExpressionPrimary
+    : common=valueExpressionPrimaryCommon
+    | varRef=bindingVariableReference
+    | prim=valueExpressionPrimary PERIOD_SIGN propertyName      // <property reference>
+   ;
+
+valueExpressionPrimarySpecialCase
+    : common=valueExpressionPrimaryCommon
+    | prim=valueExpressionPrimary PERIOD_SIGN propertyName      // <property reference>
+    ;
+
+valueExpressionPrimaryCommon
+    : val=unsignedValueSpecification
+// List and Record literals are reduntantly/abiguously part of the literal production
+//    | listValueConstructor
+//    | recordConstructor
+    | pathValueSpecification
+    | valueQueryExpression
+    | caseExpression
+    | castSpecification
+    | elementIdFunction
+    | letValueExpression
+    | aggregateFunction
     ;
 
 /* Restore ISO GQL grammar

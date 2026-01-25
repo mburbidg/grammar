@@ -22,12 +22,9 @@ objectName
     : anyIdent
     ;
 
-/* Disable primary object expressions
-
 objectNameOrBindingVariable
-    : regularIdentifier
+    : varIdent
     ;
-*/
 
 directoryName
     : anyIdent
@@ -41,12 +38,11 @@ graphName
     : anyIdent
     ;
 
-/* Disable primary object expressions
-
 delimitedGraphName
-    : delimitedIdentifier
+    // DELIMITED_IDENTIFIER
+    : DOUBLE_QUOTED_CHARACTER_SEQUENCE
+    | ACCENT_QUOTED_CHARACTER_SEQUENCE
     ;
-*/
 
 /* Disable DDL and DML
 
