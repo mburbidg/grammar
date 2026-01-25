@@ -156,19 +156,12 @@ valueVariableDefinition
     : VALUE var=bindingVariable init=valueInitializer
     ;
 
-/* Inline optTypedValueInitializer
-
 optTypedValueInitializer
     : (( DOUBLE_COLON | TYPED )? valueType)? valueInitializer
     ;
-*/
 
 valueInitializer
-/* Inline optTypedValueInitializer
-
-    : EQUALS_OPERATOR valueExpression
-*/
-    : (( DOUBLE_COLON | TYPED )? valueType)? EQUALS_OPERATOR expr=valueExpression
+    : EQUALS_OPERATOR expr=valueExpression
     ;
 
 // =====================================================================================================================

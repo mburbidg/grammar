@@ -48,7 +48,7 @@ sessionSetTimeZoneClause
 sessionSetParameterClause
     : sessionSetGraphParameterClause
     | sessionSetBindingTableParameterClause
-//    | sessionSetValueParameterClause
+    | sessionSetValueParameterClause
     ;
 
 sessionSetGraphParameterClause
@@ -58,10 +58,10 @@ sessionSetGraphParameterClause
 sessionSetBindingTableParameterClause
     : BINDING? TABLE sessionSetParameterName optTypedBindingTableInitializer
     ;
-//
-//sessionSetValueParameterClause
-//    : VALUE sessionSetParameterName optTypedValueInitializer
-//    ;
+
+sessionSetValueParameterClause
+    : VALUE sessionSetParameterName optTypedValueInitializer
+    ;
 
 sessionSetParameterName
     : (IF NOT EXISTS)? sessionParameterSpecification
