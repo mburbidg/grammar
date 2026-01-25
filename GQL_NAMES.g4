@@ -62,16 +62,16 @@ edgeTypeName
     ;
 */
 
-/* Disable primary object expressions for now
-
 bindingTableName
-    : identifier
+    : anyIdent
+    | delimitedBindingTableName
     ;
 
 delimitedBindingTableName
-     : delimitedIdentifier
-     ;
-*/
+    // DELIMITED_IDENTIFIER
+    : DOUBLE_QUOTED_CHARACTER_SEQUENCE
+    | ACCENT_QUOTED_CHARACTER_SEQUENCE
+    ;
 
 procedureName
     : anyIdent

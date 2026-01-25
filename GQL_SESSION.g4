@@ -47,17 +47,17 @@ sessionSetTimeZoneClause
 
 sessionSetParameterClause
     : sessionSetGraphParameterClause
-//    | sessionSetBindingTableParameterClause
+    | sessionSetBindingTableParameterClause
 //    | sessionSetValueParameterClause
     ;
 
 sessionSetGraphParameterClause
     : PROPERTY? GRAPH sessionSetParameterName optTypedGraphInitializer
     ;
-//
-//sessionSetBindingTableParameterClause
-//    : BINDING? TABLE sessionSetParameterName optTypedBindingTableInitializer
-//    ;
+
+sessionSetBindingTableParameterClause
+    : BINDING? TABLE sessionSetParameterName optTypedBindingTableInitializer
+    ;
 //
 //sessionSetValueParameterClause
 //    : VALUE sessionSetParameterName optTypedValueInitializer

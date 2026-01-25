@@ -132,8 +132,6 @@ graphInitializer
 // 10.2 <binding table variable definition>
 // ---------------------------------------------------------------------------------------------------------------------
 
-/* Simplify procedure body
-
 bindingTableVariableDefinition
     : BINDING? TABLE bindingVariable optTypedBindingTableInitializer
     ;
@@ -145,7 +143,6 @@ optTypedBindingTableInitializer
 bindingTableInitializer
     : EQUALS_OPERATOR bindingTableExpression
     ;
-*/
 
 // ---------------------------------------------------------------------------------------------------------------------
 // 10.3 <value variable definition>
@@ -198,8 +195,6 @@ currentGraph
 // 11.2 <binding table expression>
 // ---------------------------------------------------------------------------------------------------------------------
 
-/* Remove primary object expressions for now
-
 bindingTableExpression
     : nestedBindingTableQuerySpecification
     | bindingTableReference
@@ -210,8 +205,6 @@ bindingTableExpression
 nestedBindingTableQuerySpecification
     : nestedQuerySpecification
     ;
-
-*/
 
 // ---------------------------------------------------------------------------------------------------------------------
 // 11.3 <object expression primary>
@@ -1688,14 +1681,11 @@ catalogGraphTypeParentAndName
 // 17.4 <binding table reference> and <catalog binding table parent name>
 // ---------------------------------------------------------------------------------------------------------------------
 
-/* Remove primary object expressions for now
-
 bindingTableReference
     : catalogObjectParentReference bindingTableName
     | delimitedBindingTableName
     | referenceParameterSpecification
     ;
-*/
 
 // ---------------------------------------------------------------------------------------------------------------------
 // 17.5 <procedure reference> and <catalog procedure parent and name>
