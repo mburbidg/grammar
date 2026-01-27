@@ -33,11 +33,8 @@ nestedProcedureSpecification
 // but an implementation has to make the distinction semantically, in code, based on the kind of statements contained in
 // the <procedure specification>. They have been removed here. [openGQL]
 procedureSpecification
-/* Inline and simplify procedureBody
-
-    : procedureBody
- */
-    : /* atSchemaClause? varBlock=bindingVariableDefinitionBlock? */ stmBlock=statementBlock
+/* Inline procedureBody */
+    : atSchemaClause? varBlock=bindingVariableDefinitionBlock? stmBlock=statementBlock
     ;
 
 /* - Disable DDL and DML
@@ -66,8 +63,6 @@ procedureBody
     ;
 */
 
-/* Simplify procedure body
-
 bindingVariableDefinitionBlock
     : bindingVariableDefinition+
     ;
@@ -77,7 +72,6 @@ bindingVariableDefinition
     | bindingTableVariableDefinition
     | valueVariableDefinition
     ;
-*/
 
 statementBlock
     : statement nextStatement*
@@ -116,9 +110,9 @@ nextStatement
 // 10.1 <graph variable definition>
 // ---------------------------------------------------------------------------------------------------------------------
 
-//graphVariableDefinition
-//    : PROPERTY? GRAPH bindingVariable optTypedGraphInitializer
-//    ;
+graphVariableDefinition
+    : PROPERTY? GRAPH bindingVariable optTypedGraphInitializer
+    ;
 
 optTypedGraphInitializer
     : (( DOUBLE_COLON | TYPED )? graphReferenceValueType)? graphInitializer
@@ -836,12 +830,9 @@ conditionalStatementResult
 // 16.1 <at schema clasue>
 // ---------------------------------------------------------------------------------------------------------------------
 
-/* Simplify procedure body
-
 atSchemaClause
     : AT schemaReference
     ;
-*/
 
 // ---------------------------------------------------------------------------------------------------------------------
 // 16.2 <use graph clause>
