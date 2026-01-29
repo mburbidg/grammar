@@ -1632,13 +1632,10 @@ graphReference
     | referenceParameterSpecification
     ;
 
-/* Disable DDL and DML
-
 catalogGraphParentAndName
 
     : catalogObjectParentReference? graphName
     ;
-*/
 
 homeGraph
     : HOME_PROPERTY_GRAPH
@@ -1649,8 +1646,6 @@ homeGraph
 // 17.3 <graph type reference> and <catalog graph type parent and name>
 // ---------------------------------------------------------------------------------------------------------------------
 
-/* Disable DDL and DML
-
 graphTypeReference
     : catalogGraphTypeParentAndName
     | referenceParameterSpecification
@@ -1659,7 +1654,6 @@ graphTypeReference
 catalogGraphTypeParentAndName
     : catalogObjectParentReference? graphTypeName
     ;
-*/
 
 // ---------------------------------------------------------------------------------------------------------------------
 // 17.4 <binding table reference> and <catalog binding table parent name>

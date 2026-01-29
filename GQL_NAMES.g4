@@ -44,12 +44,9 @@ delimitedGraphName
     | ACCENT_QUOTED_CHARACTER_SEQUENCE
     ;
 
-/* Disable DDL and DML
-
 graphTypeName
-    : identifier
+    : anyIdent
     ;
-*/
 
 /* Disable graph element type names
 
