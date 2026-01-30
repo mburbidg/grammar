@@ -37,13 +37,9 @@ procedureSpecification
     : atSchemaClause? varBlock=bindingVariableDefinitionBlock? stmBlock=statementBlock
     ;
 
-/* - Disable DDL and DML
-   - Inline procedure body
-
 nestedDataModifyingProcedureSpecification
     : LEFT_BRACE procedureSpecification RIGHT_BRACE
     ;
-*/
 
 nestedQuerySpecification
 /*  M1: Inline procedure body
@@ -214,8 +210,6 @@ objectExpressionPrimary
 // 13.1 <linear data-modifying statement>
 // ---------------------------------------------------------------------------------------------------------------------
 
-/* Disable DDL and DML
-
 linearDataModifyingStatement
     : focusedLinearDataModifyingStatement
     | ambientLinearDataModifyingStatement
@@ -263,24 +257,18 @@ primitiveDataModifyingStatement
     | removeStatement
     | deleteStatement
     ;
-*/
 
 // ---------------------------------------------------------------------------------------------------------------------
 // 13.2 <insertStatement>
 // ---------------------------------------------------------------------------------------------------------------------
 
-/* Disable DDL and DML
-
 insertStatement
     : INSERT insertGraphPattern
     ;
-*/
 
 // ---------------------------------------------------------------------------------------------------------------------
 // 13.3 <set statement>
 // ---------------------------------------------------------------------------------------------------------------------
-
-/* Disable DDL and DML
 
 setStatement
     : SET setItemList
@@ -297,23 +285,20 @@ setItem
     ;
 
 setPropertyItem
-    : bindingVariableReference PERIOD propertyName EQUALS_OPERATOR valueExpression
+    : bindingVariableReference PERIOD_SIGN propertyName EQUALS_OPERATOR valueExpression
     ;
 
 setAllPropertiesItem
-    : bindingVariableReference EQUALS_OPERATOR LEFT_BRACE propertyKeyValuePairList? RIGHT_BRACE
+    : bindingVariableReference EQUALS_OPERATOR LEFT_BRACE propertySpecificationList? RIGHT_BRACE
     ;
 
 setLabelItem
     : bindingVariableReference ( IS | COLON ) labelName
     ;
-*/
 
 // ---------------------------------------------------------------------------------------------------------------------
 // 13.4 <remove statement>
 // ---------------------------------------------------------------------------------------------------------------------
-
-/* Disable DDL and DML
 
 removeStatement
     : REMOVE removeItemList
@@ -329,7 +314,7 @@ removeItem
     ;
 
 removePropertyItem
-    : bindingVariableReference PERIOD propertyName
+    : bindingVariableReference PERIOD_SIGN propertyName
     ;
 
 removeLabelItem
@@ -351,19 +336,14 @@ deleteItemList
 deleteItem
     : valueExpression
     ;
-*/
 
 // ---------------------------------------------------------------------------------------------------------------------
 // 13.6 <call data-modifying procedure statement>
 // ---------------------------------------------------------------------------------------------------------------------
 
-/* Disable DDL and DML
-
 callDataModifyingProcedureStatement
     : callProcedureStatement
     ;
-*/
-
 
 // =====================================================================================================================
 // 14 Query statements
@@ -495,12 +475,12 @@ ambientLinearQueryStatement
 simpleLinearQueryStatement
     : simpleQueryStatement+
     ;
+*/
 
 simpleQueryStatement
     : primitiveQueryStatement
     | callQueryStatement
     ;
-*/
 
 primitiveStatement
     : primitiveQueryStatement
@@ -558,12 +538,9 @@ matchStatementBlock
 // 14.5 <call query statement>
 // ---------------------------------------------------------------------------------------------------------------------
 
-/* Replace linearQueryStatement with linearStatement
-
 callQueryStatement
     : callProcedureStatement
     ;
-*/
 
 // ---------------------------------------------------------------------------------------------------------------------
 // 14.6 <filter statement>
@@ -930,8 +907,6 @@ graphPatternWhereClause
 // 16.5 <insert graph pattern>
 // ---------------------------------------------------------------------------------------------------------------------
 
-/* Disable DDL and DML
-
 insertGraphPattern
     : insertPathPatternList
     ;
@@ -975,7 +950,6 @@ labelAndPropertySetSpecification
     : ( IS | COLON ) labelSetSpecification elementPropertySetSpecification?
     | ((IS | COLON ) labelSetSpecification)? elementPropertySetSpecification
     ;
-*/
 
 // ---------------------------------------------------------------------------------------------------------------------
 // 16.6 <path pattern prefix>
@@ -1685,8 +1659,8 @@ catalogProcedureParentAndName
 catalogObjectParentReference
 /* Non-conformant removal of schema references to cater for lack of GQL catalog support
 
-    : schemaReference SOLIDUS? (objectName PERIOD)*
-    | (objectName PERIOD)+
+    : schemaReference SOLIDUS? (objectName PERIOD_SIGN)*
+    | (objectName PERIOD_SIGN)+
 */
     : (objectName PERIOD_SIGN)+
     ;
