@@ -71,26 +71,15 @@ bindingVariableDefinition
 
 statementBlock
     : statement nextStatement*
-    // Putting this here is a mild deviation from GQL reflecting the fact that we want to support
-    // at most one DDL statement right now
-    | primitiveCatalogModifyingStatement
     ;
 
 statement
-/* Disable original DDL and DML
-
     : linearCatalogModifyingStatement
     | linearDataModifyingStatement
-    | compositeQueryStatement
-*/
-/* Rename compositeQueryStatement to compositeStatement
-
-    : compositeQueryStatement
- */
-    : compositeStatement
+    | compositeStatement
 /* Add <conditional statement> from latest draft
-*/
     | conditionalStatement
+*/
     ;
 
 nextStatement
@@ -353,12 +342,7 @@ callDataModifyingProcedureStatement
 // 14.1 <composite query statement>
 // ---------------------------------------------------------------------------------------------------------------------
 
-/* Rename compositeQueryStatement to compositeStatement
-
-compositeQueryStatement
-    : compositeQueryExpression
-    ;
-*/
+/* Rename compositeQueryStatement to compositeStatement */
 
 compositeStatement
 /* - Inline compositeQueryExpression
@@ -366,7 +350,7 @@ compositeStatement
 
    : linearQueryStatement (queryConjunction linearQueryStatement)*
 */
-    : linearStatement (queryConjunction linearStatement)*
+    : stmts+=linearStatement (queryConjunction stmts+=linearStatement)*
     ;
 
 /* Inline linearStatementBody
